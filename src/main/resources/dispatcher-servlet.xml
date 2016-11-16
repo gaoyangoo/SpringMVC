@@ -8,13 +8,16 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd">
 
     <!-- scan the package and the sub package -->
-    <context:component-scan base-package="com.alex.demo.controller"/>
+    <context:component-scan base-package="com.alex.demo"/>
 
     <!-- don't handle the static resource -->
     <mvc:default-servlet-handler />
 
     <!-- if you use annotation you must configure following setting -->
     <mvc:annotation-driven />
+
+    <mvc:resources mapping="/swagger/**" location="/swagger/"/>
+    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
 
     <!-- configure the InternalResourceViewResolver -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->
