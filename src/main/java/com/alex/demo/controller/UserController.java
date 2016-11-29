@@ -2,18 +2,22 @@ package com.alex.demo.controller;
 
 import com.alex.demo.domain.User;
 import com.wordnik.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by yang_gao on 2016/11/16.
  */
 @RestController
 @RequestMapping("/User")
+@CrossOrigin(origins = "*")
 public class UserController {
+
+    @Autowired
+    User user;
+
     @ApiOperation(value = "return result of login",response = String.class)
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String login(){
@@ -33,5 +37,18 @@ public class UserController {
         temp.setUserName("test");
         temp.setAge("20");
         return new ResponseEntity<User>(temp, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "返回作者")
+    @RequestMapping(value = "/Author",method = RequestMethod.GET)
+    public User getAuthor(){
+        return this.user;
+    }
+
+
+    @RequestMapping(value="/createUser",method= RequestMethod.POST)
+    public User createUser(@RequestBody User user){
+        System.out.println(user.toString());
+        return user;
     }
 }
