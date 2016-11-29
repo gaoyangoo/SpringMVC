@@ -17,7 +17,8 @@
     <mvc:annotation-driven />
 
     <mvc:resources mapping="/swagger/**" location="/swagger/"/>
-    <bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+
+    <!--<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />-->
 
     <!-- configure the InternalResourceViewResolver -->
     <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"-->

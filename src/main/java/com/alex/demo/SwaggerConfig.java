@@ -18,11 +18,12 @@ import org.springframework.context.annotation.Configuration;
 public class SwaggerConfig {
 
     private SpringSwaggerConfig springSwaggerConfig;
+
     @Autowired
     public void setSpringSwaggerConfig(SpringSwaggerConfig springSwaggerConfig){
-        System.out.println("run the config swagger");
         this.springSwaggerConfig = springSwaggerConfig;
     }
+
     @Bean
     public SwaggerSpringMvcPlugin config(){
         System.out.println("run the config swagger for set apiInfo");
@@ -35,7 +36,6 @@ public class SwaggerConfig {
         plugin.useDefaultResponseMessages(false);
         return plugin;
     }
-
 
     private ApiInfo getApiInfo() {
         ApiInfo apiInfo = new ApiInfoBuilder()
