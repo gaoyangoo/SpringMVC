@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class UserController {
 
-    @Autowired
-    User user;
 
     @ApiOperation(value = "return result of login",response = String.class)
     @RequestMapping(value = "/login",method = RequestMethod.GET)
@@ -38,13 +36,6 @@ public class UserController {
         temp.setAge("20");
         return new ResponseEntity<User>(temp, HttpStatus.OK);
     }
-
-    @ApiOperation(value = "返回作者")
-    @RequestMapping(value = "/Author",method = RequestMethod.GET)
-    public User getAuthor(){
-        return this.user;
-    }
-
 
     @RequestMapping(value="/createUser",method= RequestMethod.POST)
     public User createUser(@RequestBody User user){
